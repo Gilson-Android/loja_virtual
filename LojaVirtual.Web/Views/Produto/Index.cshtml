@@ -1,0 +1,51 @@
+﻿@model IEnumerable<LojaVirtual.Entidade.Produto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ds_Produto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ds_Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vl_Produto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_Grupo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ds_Produto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ds_Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vl_Produto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_Grupo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_Produto }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_Produto }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_Produto })
+        </td>
+    </tr>
+}
+
+</table>
