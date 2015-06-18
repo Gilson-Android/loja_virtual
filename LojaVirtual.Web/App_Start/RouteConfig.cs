@@ -13,17 +13,68 @@ namespace LojaVirtual.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: null,
-                url: "Pagina{pagina}",
-                defaults: new { controller = "Produto", Action = "ListarProdutos" }
-                );
+            routes.MapRoute(null,
+                            "",
+                            new
+                            {
+                                controller = "Produto",
+                                action = "ListarProdutos",
+                                categoria = (string)null,
+                                pagina = 1
+                            });
 
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+            //Inicio
+            routes.MapRoute(null,
+                           "Pagina{pagina}",
+                           new
+                           {
+                               controller = "Produto",
+                               action = "ListarProdutos",
+                               categoria = (string)null,
+                               pagina = 1
+                           });
+            // 2
+            routes.MapRoute(null,
+                              "pagina{pagina}",
+                              new
+                              {
+                                  controller = "Produto",
+                                  action = "ListarProdutos",
+                                  categoria = (string)null,
+                              },
+                              new
+                              {
+                                  pagina = @"\d+"
+                              }
+                          );
+
+
+
+            //3
+            routes.MapRoute(null, "{categoria}", new
+            {
+                controller = "Produto",
+                action = "ListarProdutos",
+                pagina = 1
+            });
+
+            //4
+            routes.MapRoute(null,
+                             "{categoria}/pagina{pagina}",
+                             new
+                             {
+                                 controller = "Produto",
+                                 action = "ListarProdutos"
+                             },
+                             new
+                             {
+                                 pagina = @"\d+"
+                             }
+                         );
+
+            routes.MapRoute(null, "{controller}/{action}");
+   
+
         }
     }
 }

@@ -11,5 +11,6 @@ namespace LojaVirtual.Web.Models
     {
         public IEnumerable<Produto> Produtos { get; set; }
         public Paginacao Paginacao { get; set; }
+        public string GrupoAtual { get; set; }
     }
 }

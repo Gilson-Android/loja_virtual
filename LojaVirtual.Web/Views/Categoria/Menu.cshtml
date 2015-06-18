@@ -1,0 +1,19 @@
+﻿@using LojaVirtual.Web.Controllers.HtmlHelpers
+@model System.Collections.Generic.IEnumerable<LojaVirtual.Entidade.Grupo>
+
+
+@Html.ActionLink("Todos os Produtos", "ListarProdutos", "Produto", null, new { @class = "btn btn-block btn-default btn-lg" })
+
+@foreach (var link in Model)
+{
+    @Html.RouteLink(link.ds_Grupo, new
+        {
+            controller = "Produto",
+            action = "ListarProdutos",
+            categoria = link.ds_Grupo.ToUpper(),
+            pagina = 1
+        }, new { 
+            @class = "btn btn-block btn-default btn-lg"
+            + (link.ds_Grupo.ToUpper() == ViewBag.CategoriaSelcionada.ToUpper() ? " btn-primary" : "") 
+        })
+}
