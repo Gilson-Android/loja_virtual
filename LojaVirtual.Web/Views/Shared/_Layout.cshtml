@@ -10,34 +10,32 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse">
-        <div class="container">
+    <div class="col-lg-12 top">
+        <div class="navbar navbar-inverse">
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("DGT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("DGT", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
             </div>
+            @Html.Action("Resumo", "Carrinho")
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+                <ul class="nav navbar-nav"></ul>
             </div>
-        </div>
-    </div>
-    <div class="row panel bottom-left">
-        <div id="categoria" class="col-xs-3">
-            @Html.Action("Menu", "Categoria");
         </div>
     </div>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+
+    <div id="categoria" class="col-xs-3">
+        @Html.Action("Menu", "Categoria");
+    </div>
+
+
+    <div id="categoria" class="col-xs-9">
+        @RenderBody();
     </div>
 
 </body>
